@@ -55,6 +55,3 @@ The project is still in development.
 - Manage products
 - Manage orders
 - Dashboard screen
-cd backend
-npm install
-npm run dev
