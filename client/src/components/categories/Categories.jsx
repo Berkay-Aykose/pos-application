@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Categories = () => {
   return (
     <ul className='flex gap-4 flex-col text-lg  '>

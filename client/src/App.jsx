@@ -1,6 +1,6 @@
-import { Button} from 'antd';
 import Header from './components/header/Header.jsx';
 import Categories from './components/categories/Categories.jsx';
+import Products from './components/products/Products.jsx';
 function App() {
   return (
     <>
@@ -16,7 +16,7 @@ function App() {
 
         <div className="products flex-[8]">
           <div>
-            products
+            <Products />
           </div>
         </div> 
 
