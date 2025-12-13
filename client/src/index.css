@@ -4,4 +4,9 @@
 
 body {
   margin: 0;
+  overflow: hidden ;
+}
+
+.categories::-webkit-scrollbar {
+  display: none;
 }
