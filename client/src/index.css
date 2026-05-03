@@ -4,6 +4,8 @@
 
 body {
   margin: 0;
+  font-family: "Electrolize", sans-serif;
+  @apply bg-gray-50;
 }
 
 @media (min-width: 768px){

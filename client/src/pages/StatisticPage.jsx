@@ -5,7 +5,7 @@ const StatisticPage = () => {
   return (
     <>
       <Header />
-      <div className="px-6">
+      <div className="px-6 md:pb-0 pb-20">
         <h1 className="text-4xl font-bold text-center mb-4">İstatistiklerim</h1>
         <div className="statistic-section">
           <h2 className="text-lg">
