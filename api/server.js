@@ -1,9 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-
 const app = express();
+const cors = require("cors");
 const port = 5000;
+
+// Import routes
+const categoryRoute = require("./routes/categories.js");
 
 dotenv.config();
 
@@ -16,9 +19,10 @@ const connectDB = async () => {
   }
 };
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use(express.json());
+app.use(cors());
+
+app.use("/api", categoryRoute);
 
 app.listen(port, () => {
   connectDB();
