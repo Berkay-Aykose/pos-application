@@ -7,8 +7,8 @@ router.get("/get-all", async (req, res) => {
   try {
     const categories = await Category.find();
     res.status(200).json(categories);
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    res.status(500).json(error);
   }
 });
 
@@ -18,8 +18,8 @@ router.post("/add-category", async (req, res) => {
     const newCategory = new Category(req.body);
     await newCategory.save();
     res.status(200).json("Item has been added to the database");
-  } catch (err) {
-    res.status(400).json(err);
+  } catch (error) {
+    res.status(500).json(error);
   }
 });
 
@@ -29,7 +29,7 @@ router.put("/update-category", async (req, res) => {
     await Category.findOneAndUpdate({ _id: req.body.categoryId }, req.body);
     res.status(200).json("Item updated successfully.");
   } catch (error) {
-    console.log(error);
+    res.status(500).json(error);
   }
 });
 
@@ -39,7 +39,7 @@ router.delete("/delete-category", async (req, res) => {
     await Category.findOneAndDelete({ _id: req.body.categoryId });
     res.status(200).json("Item deleted successfully.");
   } catch (error) {
-    console.log(error);
+    res.status(500).json(error);
   }
 });
 
