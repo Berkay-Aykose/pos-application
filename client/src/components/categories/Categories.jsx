@@ -1,26 +1,12 @@
 import "./style.css";
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined, EditOutlined } from "@ant-design/icons";
+import Add from "./Add";
+import Edit from "./Edit";
 import { useState } from "react";
-import { Modal, Form, Input, message } from "antd";
 
 const Categories = ({ categories, setCategories }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [form] = Form.useForm();
-
-  const onFinish = (values) => {
-    try {
-      fetch("http://localhost:3000/api/categories/add-category", {
-        method: "POST",
-        body: JSON.stringify(values),
-        headers: { "Content-type": "application/json; charset=UTF-8" },
-      });
-      message.success("Kategori başarıyla eklendi.");
-      form.resetFields();
-      setCategories([...categories, values]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   return (
     <ul className="flex gap-4 md:flex-col text-lg">
@@ -29,30 +15,35 @@ const Categories = ({ categories, setCategories }) => {
           <span>{item.title}</span>
         </li>
       ))}
-      
-      <li className="category-item !bg-purple-800 hover:opacity-90" onClick={() => setIsAddModalOpen(true)}>
+
+      <li
+        className="category-item !bg-purple-800 hover:opacity-90"
+        onClick={() => setIsAddModalOpen(true)}
+      >
         <PlusOutlined className="md:text-2xl" />
       </li>
 
-      <Modal
-        title="Yeni Kategori Ekle"
-        closable={{ 'aria-label': 'Custom Close Button' }}
-        open={isAddModalOpen}
-        onCancel={() => setIsAddModalOpen(false)}
-        footer={false}
+      <li
+        className="category-item !bg-orange-800 hover:opacity-90"
+        onClick={() => setIsEditModalOpen(true)}
       >
-        <Form layout ="vertical" onFinish={onFinish} form={form}>
-          <Form.Item name="title" label="Kategori Ekle" rules={[{ required: true, message: "Lütfen kategori adını giriniz!" }]}>
-            <Input  />
-          </Form.Item>
-          <Form.Item  className="flex justify-end mb-0">
-            <button type="primary" htmlType="submit">
-              Ekle
-            </button>
-          </Form.Item>
-        </Form>
-      </Modal>
+        <EditOutlined className="md:text-2xl" />
+      </li>
 
+      <li>
+        <Add
+          isAddModalOpen={isAddModalOpen}
+          setIsAddModalOpen={setIsAddModalOpen}
+          categories={categories}
+          setCategories={setCategories}
+        />
+        <Edit
+          isEditModalOpen={isEditModalOpen}
+          setIsEditModalOpen={setIsEditModalOpen}
+          categories={categories}
+          setCategories={setCategories}
+        />
+      </li>
     </ul>
   );
 };
