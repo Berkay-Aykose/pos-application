@@ -23,6 +23,8 @@ const Add = ({
         {
           _id: Math.random(),
           title: values.title,
+          value: values.title,
+          label: values.title,
         },
       ]);
     } catch (error) {

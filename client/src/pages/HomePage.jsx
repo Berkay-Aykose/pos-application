@@ -16,9 +16,11 @@ const HomePage = () => {
         console.log(data);
         data &&
           setCategories(
-            data.map((item) => {
-              return { ...item, value: item.title };
-            })
+            data.map((item) => ({
+              ...item,
+              value: item.title,
+              label: item.title,
+            }))
           );
       } catch (error) {
         console.log(error);

@@ -21,7 +21,12 @@ const Edit = ({
       setCategories(
         categories.map((item) => {
           if (item._id === editingRow._id) {
-            return { ...item, title: values.title };
+            return {
+              ...item,
+              title: values.title,
+              value: values.title,
+              label: values.title,
+            };
           }
           return item;
         })
