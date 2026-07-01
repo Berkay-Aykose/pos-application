@@ -8,14 +8,21 @@ body {
   @apply bg-gray-50;
 }
 
-@media (min-width: 768px){
-  body{
+.ant-btn-primary {
+  background-color: #1677ff;
+}
+
+.menu-link .anticon {
+  display: flex;
+  justify-content: center;
+}
+
+
+@media (min-width: 768px) {
+  body {
     overflow: hidden;
   }
-  .ant-btn-primary {
-    background-color: #1677ff;
-  }
-  
+
   .categories::-webkit-scrollbar {
     display: none;
   }
