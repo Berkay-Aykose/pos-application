@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import HomePage from './pages/HomePage';
 import CardPage from './pages/CardPage';
 import BillsPage from './pages/BillPage';
@@ -13,14 +13,56 @@ function App() {
     <BrowserRouter>
       
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/card" element={<CardPage />} />
-        <Route path="/bills" element={<BillsPage />} />
-        <Route path="/customers" element={<CustomerPage />} />
-        <Route path="/statistics" element={<StatisticPage />} />
+        <Route
+          path="/"
+          element={
+            <RouteControl>
+              <HomePage />
+            </RouteControl>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <RouteControl>
+              <CartPage />
+            </RouteControl>
+          }
+        />
+        <Route
+          path="/bills"
+          element={
+            <RouteControl>
+              <BillPage />
+            </RouteControl>
+          }
+        />
+        <Route
+          path="/customers"
+          element={
+            <RouteControl>
+              <CustomerPage />
+            </RouteControl>
+          }
+        />
+        <Route
+          path="/statistic"
+          element={
+            <RouteControl>
+              <StatisticPage />
+            </RouteControl>
+          }
+        />
+        <Route
+          path="/products"
+          element={
+            <RouteControl>
+              <ProductPage />
+            </RouteControl>
+          }
+        />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/products" element={<ProductPage />} />
       </Routes> 
 
     </BrowserRouter> 
@@ -28,3 +70,11 @@ function App() {
 }
 
 export default App;
+
+export const RouteControl = ({ children }) => {
+  if (localStorage.getItem("posUser")) {
+    return children;
+  } else {
+    return <Navigate to="/login" />;
+  }
+};
