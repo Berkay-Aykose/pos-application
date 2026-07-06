@@ -107,7 +107,7 @@ const CardTotals = () => {
             size="large"
             className="w-full"
             disabled={cart.cartItems.length === 0}
-            onClick={()=> navigate("/cart")}
+            onClick={()=> navigate("/card")}
           >
             Sipariş Oluştur
           </Button>

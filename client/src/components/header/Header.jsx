@@ -38,7 +38,7 @@ const Header = () => {
             <span className="md:text-xs text-[10px]">Ana Sayfa</span>
           </Link>
           <Badge count={cart.cartItems.length} offset={[0, 0]} className="md:flex hidden">
-            <Link to={"/cart"} className="menu-link">
+            <Link to={"/card"} className="menu-link">
               <ShoppingCartOutlined className="md:text-2xl text-xl" />
               <span className="md:text-xs text-[10px]">Sepet</span>
             </Link>
